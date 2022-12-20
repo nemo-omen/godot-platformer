@@ -8,12 +8,16 @@ const UP = Vector2(0,-1)
 const JUMP_SPEED = 5000
 
 signal animate
+signal peek
+signal camreset
 
 func _physics_process(delta):
 	apply_gravity()
 	jump()
 	move()
 	animate()
+	peek()
+	cam_reset()
 	move_and_slide(motion, UP)
 
 func apply_gravity():
@@ -38,3 +42,16 @@ func move():
 
 func animate():
 	emit_signal("animate", motion)
+	
+func peek():
+	if Input.is_action_pressed("rightarrow"):
+		emit_signal("peek", "right")
+	elif Input.is_action_pressed("leftarrow"):
+		emit_signal("peek", "left")
+	elif Input.is_action_pressed("uparrow"):
+		emit_signal("peek", "up")
+	elif Input.is_action_pressed("downarrow"):
+		emit_signal("peek", "down")
+
+func cam_reset():
+	emit_signal('camreset')

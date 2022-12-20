@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Player/PlayerAnimation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://GFX/Background/bg_layer2.png" type="Texture" id=4]
 [ext_resource path="res://GFX/Background/bg_layer3.png" type="Texture" id=5]
 [ext_resource path="res://GFX/Background/bg_layer4.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Player/Camera2D.gd" type="Script" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 60.0
@@ -31,6 +32,7 @@ zoom = Vector2( 2, 2 )
 limit_smoothed = true
 smoothing_enabled = true
 editor_draw_limits = true
+script = ExtResource( 7 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Camera2D"]
 scroll_ignore_camera_zoom = true
@@ -71,3 +73,5 @@ margin_bottom = 40.0
 texture = ExtResource( 6 )
 
 [connection signal="animate" from="." to="PlayerAnimation" method="_on_Player_animate"]
+[connection signal="camreset" from="." to="Camera2D" method="_on_Player_camreset"]
+[connection signal="peek" from="." to="Camera2D" method="_on_Player_peek"]
