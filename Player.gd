@@ -44,14 +44,24 @@ func animate():
 	emit_signal("animate", motion)
 	
 func peek():
-	if Input.is_action_pressed("rightarrow"):
+	if Input.is_action_pressed("rightarrow") and not Input.is_action_pressed("downarrow") and not Input.is_action_pressed("uparrow"):
 		emit_signal("peek", "right")
-	elif Input.is_action_pressed("leftarrow"):
+	elif Input.is_action_pressed("leftarrow") and not Input.is_action_pressed("downarrow") and not Input.is_action_pressed("uparrow"):
 		emit_signal("peek", "left")
-	elif Input.is_action_pressed("uparrow"):
+	elif Input.is_action_pressed("uparrow") and not Input.is_action_pressed("rightarrow") and not Input.is_action_pressed("leftarrow"):
 		emit_signal("peek", "up")
-	elif Input.is_action_pressed("downarrow"):
+	elif Input.is_action_pressed("downarrow") and not Input.is_action_pressed("rightarrow") and not Input.is_action_pressed("leftarrow"):
 		emit_signal("peek", "down")
+	elif Input.is_action_pressed("rightarrow") and Input.is_action_pressed("downarrow"):
+		emit_signal("peek", "downright")
+	elif Input.is_action_pressed("rightarrow") and Input.is_action_pressed("uparrow"):
+		emit_signal("peek", "upright")
+	elif Input.is_action_pressed("leftarrow") and Input.is_action_pressed("downarrow"):
+		emit_signal("peek", "downleft")
+	elif Input.is_action_pressed("leftarrow") and Input.is_action_pressed("uparrow"):
+		emit_signal("peek", "upleft")
 
 func cam_reset():
-	emit_signal('camreset')
+	if is_on_floor():
+		if not Input.is_action_pressed("right") and not Input.is_action_pressed("left") and not Input.is_action_pressed("up") and not Input.is_action_pressed("down"):
+			emit_signal('camreset')
