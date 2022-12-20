@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Environment/PlatformTiles.tres" type="TileSet" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 498, 105 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( -1048498, 0, 0, -1048492, 0, 0, -1048486, 0, 0, -720792, 0, 0, -720786, 0, 0, -65444, 0, 0, -65438, 0, 0, 65573, 0, 0, 65579, 0, 0, 458776, 0, 0, 589901, 0, 0, 720907, 0, 0, 786585, 0, 0, 852109, 0, 0, 852115, 0, 0, 917553, 0, 0, 1245270, 0, 0, 1310850, 0, 0, 1441847, 0, 0, 1441853, 0, 0, 1441859, 0, 0, 1638483, 0, 0, 1638489, 0, 0, 1638495, 0, 0, 1638501, 0, 0, 1638507, 0, 0, 1704049, 0, 0, 1769472, 0, 0, 1769478, 0, 0, 1769484, 0, 0, 1769487, 0, 0, 1769493, 0, 0, 1769499, 0, 0, 1769505, 0, 0, 1769511, 0, 0, 1769517, 0, 0, 1769523, 0, 0, 1769529, 0, 0, 1769535, 0, 0, 1769541, 0, 0, 1769548, 0, 0, 1769591, 0, 0 )
